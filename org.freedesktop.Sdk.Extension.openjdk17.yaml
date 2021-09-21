@@ -1,8 +1,8 @@
 ---
 id: org.freedesktop.Sdk.Extension.openjdk17
-branch: '21.08'
+branch: '20.08'
 runtime: org.freedesktop.Sdk
-runtime-version: '21.08'
+runtime-version: '20.08'
 build-extension: true
 sdk: org.freedesktop.Sdk
 separate-locales: false
