@@ -69,11 +69,11 @@ modules:
       - LOG=info
       - images
     post-install:
-      - (cd $FLATPAK_DEST/jvm && ln -s openjdk-17.0.1 openjdk-17)
+      - (cd $FLATPAK_DEST/jvm && ln -s openjdk-17.0.4.1 openjdk-17)
     sources:
       - type: archive
-        url: https://github.com/openjdk/jdk17u/archive/refs/tags/jdk-17.0.1+12.tar.gz
-        sha512: 220d87a29e1a25b670d721c27069b601a48c833069cb252f81ee6de2ff65fef23fd76e689fc755940f7e457b2419ef93a15cbeca64db2a8798028729df876d25
+        url: https://github.com/openjdk/jdk17u/archive/refs/tags//jdk-17.0.4.1+1.tar.gz
+        sha512: 33396f9d8101db605aac0b064d518a800194421b211f0d903d681968beab58540367e53293fa26d4751e4bd1f459a0d07bb08b2010ac64ea5438717ea1517f76
       - type: patch
         path: 0001-Avoid-requiring-pcsc-development-files-at-runtime.patch
       - type: shell
