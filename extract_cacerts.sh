@@ -30,15 +30,29 @@ function get_alias() {
 	echo "$alias" | tr '[:upper:]' '[:lower:]' | sed -e 's/[^a-z0-9()._-]//g'
 }
 
+declare -A used_aliases
+
 for certificate in $(ls /etc/ssl/certs/*.pem) ; do
 	cert=$($jdk/bin/keytool -printcert -file $certificate)
 	issuer=$(echo "$cert" | grep '^Issuer' | cut -d' ' -f1 --complement)
 	fprint=$(echo "$cert" | grep 'SHA1:' | cut -d' ' -f3)
 	alias=$(get_alias "$issuer")
+
+	# If this alias has already been used, add a unique digit to the end
+	if [[ -v "used_aliases[$alias]" ]]; then
+		original_alias="$alias"
+		for i in {1..9}; do
+			alias="${original_alias}$i"
+			[[ -v "used_aliases[$alias]" ]] || break
+		done
+
+		echo "Note: renaming duplicate alias $original_alias -> $alias" >&2
+	fi
+
 	echo "Adding $fprint ($alias)"
 	$jdk/bin/keytool -importcert -noprompt -alias $alias -storepass changeit -storetype JKS -keystore cacerts -file $certificate
+	used_aliases["$alias"]=1
 done
 
 rm $jdk/lib/security/cacerts
 mv cacerts $jdk/lib/security/cacerts
-
