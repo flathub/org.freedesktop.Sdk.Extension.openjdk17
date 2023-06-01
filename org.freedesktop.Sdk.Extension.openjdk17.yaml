@@ -43,7 +43,7 @@ modules:
     config-opts:
       - --with-boot-jdk=/usr/lib/sdk/openjdk17/bootstrap-java
       - --with-jvm-variants=server
-      - --with-version-build=10
+      - --with-version-build=7
       - --with-version-pre=
       - --with-version-opt=
       - --with-vendor-version-string=21.9
@@ -69,11 +69,11 @@ modules:
       - LOG=info
       - images
     post-install:
-      - (cd $FLATPAK_DEST/jvm && ln -s openjdk-17.0.6 openjdk-17)
+      - (cd $FLATPAK_DEST/jvm && ln -s openjdk-17.0.7 openjdk-17)
     sources:
       - type: archive
-        url: https://github.com/openjdk/jdk17u/archive/refs/tags/jdk-17.0.6+10.tar.gz
-        sha512: ff8f2cab0051c2937fdde24db1b1367bd5f268831e5865fea37dddc5eae6342a80c6729c77085777327b819e76164a9bdd9d46ab9c09568e26fab6d3fd1d8757
+        url: https://github.com/openjdk/jdk17u/archive/refs/tags/jdk-17.0.7+7.tar.gz
+        sha512: d6933438dc18c92156d4354c82493f9176aed395ec3fb90627f14d90213901fad146a1b733a9200e9546c00c691101d145bb1744da9e7dc3cf512a2f67573984
       - type: patch
         path: 0001-Avoid-requiring-pcsc-development-files-at-runtime.patch
       - type: shell
