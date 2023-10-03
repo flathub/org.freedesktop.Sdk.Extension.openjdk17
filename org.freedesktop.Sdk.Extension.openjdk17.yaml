@@ -25,18 +25,18 @@ modules:
       - type: file
         only-arches:
           - x86_64
-        url: https://fedorapeople.org/~mbooth/bootstrap_jdk/bootstrap-openjdk-16.0.1.0.9-1.rolling.fc32.x86_64.tar.bz2
-        dest-filename: java-openjdk.tar.bz2
-        sha512: 0084f99558a73788438df4fe62700584b41ee962d7de7bd322d8950207c88acfb3839c788def906926325f782ae86068315352dfc3b8c6d5375dec192cf3adeb
+        url: https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.8.1+1/OpenJDK17U-jdk_x64_linux_hotspot_17.0.8.1_1.tar.gz
+        dest-filename: java-openjdk.tar.gz
+        sha256: c25dfbc334068a48c19c44ce39ad4b8427e309ae1cfa83f23c102e78b8a6dcc0
       - type: file
         only-arches:
           - aarch64
-        url: https://fedorapeople.org/~mbooth/bootstrap_jdk/bootstrap-openjdk-16.0.1.0.9-1.rolling.fc32.aarch64.tar.bz2
-        dest-filename: java-openjdk.tar.bz2
-        sha512: a96e7fc8fdba6bb7a374e2f1f293aca567777b447ae30ac469ef2f38e2704dfa236b54d0d12d66c863f9058d79dd16e5fdffbf22ee1d5d8c7f6e744b3e86e3e4
+        url: https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.8.1+1/OpenJDK17U-jdk_aarch64_linux_hotspot_17.0.8.1_1.tar.gz
+        dest-filename: java-openjdk.tar.gz
+        sha256: eefd3cf3b3dd47ff269fa5b5c10b5e096b163f4e9c1810023abdbc00dc6cc304
     build-commands:
       - mkdir -p $FLATPAK_DEST/bootstrap-java
-      - tar xf java-openjdk.tar.bz2 --strip-components=4 --directory=$FLATPAK_DEST/bootstrap-java
+      - tar xf java-openjdk.tar.gz --strip-components=1 --directory=$FLATPAK_DEST/bootstrap-java
   - name: java
     buildsystem: autotools
     no-parallel-make: true
@@ -69,11 +69,11 @@ modules:
       - LOG=info
       - images
     post-install:
-      - (cd $FLATPAK_DEST/jvm && ln -s openjdk-17.0.7 openjdk-17)
+      - (cd $FLATPAK_DEST/jvm && ln -s openjdk-17.* openjdk-17)
     sources:
       - type: archive
-        url: https://github.com/openjdk/jdk17u/archive/refs/tags/jdk-17.0.7+7.tar.gz
-        sha512: d6933438dc18c92156d4354c82493f9176aed395ec3fb90627f14d90213901fad146a1b733a9200e9546c00c691101d145bb1744da9e7dc3cf512a2f67573984
+        url: https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.8.1+1/OpenJDK17U-jdk-sources_17.0.8.1_1.tar.gz
+        sha256: 49d4791e6f6be56ecbd39e35e27bd288346d01d022ac3ea77497e46e7731cfb6
       - type: patch
         path: 0001-Avoid-requiring-pcsc-development-files-at-runtime.patch
       - type: shell
@@ -94,9 +94,9 @@ modules:
       - '*.cmd'
     sources:
       - type: file
-        url: http://archive.apache.org/dist/ant/binaries/apache-ant-1.10.12-bin.tar.gz
+        url: http://archive.apache.org/dist/ant/binaries/apache-ant-1.10.14-bin.tar.gz
         dest-filename: apache-ant-bin.tar.gz
-        sha512: 2287dc5cfc21043c14e5413f9afb1c87c9f266ec2a9ba2d3bf2285446f6e4ccb59b558bf2e5c57911a05dfa293c7d5c7ad60ac9f744ba11406f4e6f9a27b2403
+        sha512: 4e74b382dd8271f9eac9fef69ba94751fb8a8356dbd995c4d642f2dad33de77bd37d4001d6c8f4f0ef6789529754968f0c1b6376668033c8904c6ec84543332a
     build-commands:
       - mkdir -p $FLATPAK_DEST/ant
       - tar xf apache-ant-bin.tar.gz --strip-components=1 --directory=$FLATPAK_DEST/ant
@@ -108,9 +108,9 @@ modules:
       - '*.cmd'
     sources:
       - type: file
-        url: http://archive.apache.org/dist/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.tar.gz
+        url: http://archive.apache.org/dist/maven/maven-3/3.9.4/binaries/apache-maven-3.9.4-bin.tar.gz
         dest-filename: apache-maven-bin.tar.gz
-        sha512: a9b2d825eacf2e771ed5d6b0e01398589ac1bfa4171f36154d1b5787879605507802f699da6f7cfc80732a5282fd31b28e4cd6052338cbef0fa1358b48a5e3c8
+        sha512: deaa39e16b2cf20f8cd7d232a1306344f04020e1f0fb28d35492606f647a60fe729cc40d3cba33e093a17aed41bd161fe1240556d0f1b80e773abd408686217e
     build-commands:
       - mkdir -p $FLATPAK_DEST/maven
       - tar xf apache-maven-bin.tar.gz --strip-components=1 --exclude=jansi-native --directory=$FLATPAK_DEST/maven
@@ -121,9 +121,9 @@ modules:
       - '*.bat'
     sources:
       - type: file
-        url: https://services.gradle.org/distributions/gradle-7.3-bin.zip
+        url: https://services.gradle.org/distributions/gradle-8.3-bin.zip
         dest-filename: gradle-bin.zip
-        sha256: de8f52ad49bdc759164f72439a3bf56ddb1589c4cde802d3cec7d6ad0e0ee410
+        sha256: 591855b517fc635b9e04de1d05d5e76ada3f89f5fc76f87978d1b245b4f69225
     build-commands:
       - unzip -q gradle-bin.zip -d $FLATPAK_DEST
       - mv $FLATPAK_DEST/gradle-* $FLATPAK_DEST/gradle
