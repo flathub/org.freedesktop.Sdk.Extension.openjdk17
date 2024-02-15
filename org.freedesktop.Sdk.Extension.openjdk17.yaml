@@ -1,4 +1,3 @@
----
 id: org.freedesktop.Sdk.Extension.openjdk17
 branch: '22.08'
 runtime: org.freedesktop.Sdk
@@ -43,7 +42,6 @@ modules:
     config-opts:
       - --with-boot-jdk=/usr/lib/sdk/openjdk17/bootstrap-java
       - --with-jvm-variants=server
-      - --with-version-build=7
       - --with-version-pre=
       - --with-version-opt=
       - --with-vendor-version-string=21.9
@@ -71,15 +69,24 @@ modules:
     post-install:
       - (cd $FLATPAK_DEST/jvm && ln -s openjdk-17.* openjdk-17)
     sources:
-      - type: archive
-        url: https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.9+9/OpenJDK17U-jdk-sources_17.0.9_9.tar.gz
-        sha256: 5849d187849e55931e2afd343ae30f10808be4524fece2d195d4d41e84905252
+      - type: git
+        url: https://github.com/adoptium/jdk17u.git
+        tag: jdk-17.0.9+9
+        commit: 9c16e89d275654cee98f5374434bea2097dda91e
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/adoptium/temurin17-binaries/releases/latest
+          is-main-source: true
+          tag-query: .tag_name
       - type: patch
         path: 0001-Avoid-requiring-pcsc-development-files-at-runtime.patch
+      - type: patch
+        path: 0002-java-remove-version-build.patch
       - type: shell
         commands:
           - chmod a+x configure
           - sed -i -e "s|@prefix@|$FLATPAK_DEST|" make/autoconf/spec.gmk.in
+          - git describe --match jdk-17.*+* HEAD | sed -e 's/jdk-17.*+\(\)/VERSION_BUILD=\1/' >> make/conf/version-numbers.conf
   - name: cacerts
     buildsystem: simple
     sources:
@@ -97,6 +104,12 @@ modules:
         url: http://archive.apache.org/dist/ant/binaries/apache-ant-1.10.14-bin.tar.gz
         dest-filename: apache-ant-bin.tar.gz
         sha512: 4e74b382dd8271f9eac9fef69ba94751fb8a8356dbd995c4d642f2dad33de77bd37d4001d6c8f4f0ef6789529754968f0c1b6376668033c8904c6ec84543332a
+        x-checker-data:
+          type: anitya
+          project-id: 50
+          stable-only: true
+          is-main-source: false
+          url-template: http://archive.apache.org/dist/ant/binaries/apache-ant-$version-bin.tar.gz
     build-commands:
       - mkdir -p $FLATPAK_DEST/ant
       - tar xf apache-ant-bin.tar.gz --strip-components=1 --directory=$FLATPAK_DEST/ant
@@ -111,6 +124,14 @@ modules:
         url: http://archive.apache.org/dist/maven/maven-3/3.9.4/binaries/apache-maven-3.9.4-bin.tar.gz
         dest-filename: apache-maven-bin.tar.gz
         sha512: deaa39e16b2cf20f8cd7d232a1306344f04020e1f0fb28d35492606f647a60fe729cc40d3cba33e093a17aed41bd161fe1240556d0f1b80e773abd408686217e
+        x-checker-data:
+          type: anitya
+          project-id: 1894
+          stable-only: true
+          is-main-source: false
+          url-template: http://archive.apache.org/dist/maven/maven-3/$version/binaries/apache-maven-$version-bin.tar.gz
+          versions:
+            <: 4.0.0
     build-commands:
       - mkdir -p $FLATPAK_DEST/maven
       - tar xf apache-maven-bin.tar.gz --strip-components=1 --exclude=jansi-native --directory=$FLATPAK_DEST/maven
@@ -124,6 +145,12 @@ modules:
         url: https://services.gradle.org/distributions/gradle-8.3-bin.zip
         dest-filename: gradle-bin.zip
         sha256: 591855b517fc635b9e04de1d05d5e76ada3f89f5fc76f87978d1b245b4f69225
+        x-checker-data:
+          type: json
+          url: https://services.gradle.org/versions/current
+          is-main-source: false
+          version-query: .version
+          url-query: .downloadUrl
     build-commands:
       - unzip -q gradle-bin.zip -d $FLATPAK_DEST
       - mv $FLATPAK_DEST/gradle-* $FLATPAK_DEST/gradle
