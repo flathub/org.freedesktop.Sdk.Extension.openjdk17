@@ -1,0 +1,42 @@
+commit 2bf4f8e07bcbebbde9330d9c9e6906c588ec6f19
+Author: Martin Pilarski <mpilarski@aqwe.de>
+Date:   Thu Feb 15 20:34:30 2024 +0100
+
+    Avoid unsetting of VERSION_BUILD by removing corresponding code.
+    VERSION_BUILD gets set via make/conf/version-numbers.conf.
+
+diff --git a/make/autoconf/jdk-version.m4 b/make/autoconf/jdk-version.m4
+index b75d2392980..59dc1a769a9 100644
+--- a/make/autoconf/jdk-version.m4
++++ b/make/autoconf/jdk-version.m4
+@@ -257,30 +257,6 @@ AC_DEFUN_ONCE([JDKVER_SETUP_JDK_VERSION_NUMBERS],
+     fi
+   fi
+ 
+-  AC_ARG_WITH(version-build, [AS_HELP_STRING([--with-version-build],
+-      [Set version 'BUILD' field (build number) @<:@not specified@:>@])],
+-      [with_version_build_present=true], [with_version_build_present=false])
+-
+-  if test "x$with_version_build_present" = xtrue; then
+-    if test "x$with_version_build" = xyes; then
+-      AC_MSG_ERROR([--with-version-build must have a value])
+-    elif test "x$with_version_build" = xno; then
+-      # Interpret --without-* as empty string instead of the literal "no"
+-      VERSION_BUILD=
+-    elif test "x$with_version_build" = x; then
+-      VERSION_BUILD=
+-    else
+-      JDKVER_CHECK_AND_SET_NUMBER(VERSION_BUILD, $with_version_build)
+-    fi
+-  else
+-    if test "x$NO_DEFAULT_VERSION_PARTS" != xtrue; then
+-      # Default is to not have a build number.
+-      VERSION_BUILD=""
+-      # FIXME: Until all code can cope with an empty VERSION_BUILD, set it to 0.
+-      VERSION_BUILD=0
+-    fi
+-  fi
+-
+   AC_ARG_WITH(version-feature, [AS_HELP_STRING([--with-version-feature],
+       [Set version 'FEATURE' field (first number) @<:@current source value@:>@])],
+       [with_version_feature_present=true], [with_version_feature_present=false])
