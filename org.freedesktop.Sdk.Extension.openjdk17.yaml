@@ -71,8 +71,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/adoptium/jdk17u.git
-        tag: jdk-17.0.11+9
-        commit: 1c40f899c9c736998ba38e805d88361e53511c64
+        tag: jdk-17.0.12+7
+        commit: 833f65ecb304ce39061a957667ef39c318105489
         x-checker-data:
           type: json
           url: https://api.github.com/repos/adoptium/temurin17-binaries/releases/latest
@@ -142,9 +142,9 @@ modules:
       - '*.bat'
     sources:
       - type: file
-        url: https://services.gradle.org/distributions/gradle-8.7-bin.zip
+        url: https://services.gradle.org/distributions/gradle-8.9-bin.zip
         dest-filename: gradle-bin.zip
-        sha256: 544c35d6bd849ae8a5ed0bcea39ba677dc40f49df7d1835561582da2009b961d
+        sha256: d725d707bfabd4dfdc958c624003b3c80accc03f7037b5122c4b1d0ef15cecab
         x-checker-data:
           type: json
           url: https://services.gradle.org/versions/current
