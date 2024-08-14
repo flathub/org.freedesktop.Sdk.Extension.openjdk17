@@ -142,9 +142,9 @@ modules:
       - '*.bat'
     sources:
       - type: file
-        url: https://services.gradle.org/distributions/gradle-8.9-bin.zip
+        url: https://services.gradle.org/distributions/gradle-8.10-bin.zip
         dest-filename: gradle-bin.zip
-        sha256: d725d707bfabd4dfdc958c624003b3c80accc03f7037b5122c4b1d0ef15cecab
+        sha256: 5b9c5eb3f9fc2c94abaea57d90bd78747ca117ddbbf96c859d3741181a12bf2a
         x-checker-data:
           type: json
           url: https://services.gradle.org/versions/current
