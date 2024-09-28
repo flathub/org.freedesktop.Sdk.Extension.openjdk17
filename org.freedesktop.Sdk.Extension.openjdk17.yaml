@@ -100,9 +100,9 @@ modules:
       - '*.cmd'
     sources:
       - type: file
-        url: http://archive.apache.org/dist/ant/binaries/apache-ant-1.10.14-bin.tar.gz
+        url: http://archive.apache.org/dist/ant/binaries/apache-ant-1.10.15-bin.tar.gz
         dest-filename: apache-ant-bin.tar.gz
-        sha512: 4e74b382dd8271f9eac9fef69ba94751fb8a8356dbd995c4d642f2dad33de77bd37d4001d6c8f4f0ef6789529754968f0c1b6376668033c8904c6ec84543332a
+        sha512: d78427aff207592c024ff1552dc04f7b57065a195c42d398fcffe7a0145e8d00cd46786f5aa52e77ab0fdf81334f065eb8011eecd2b48f7228e97ff4cb20d16c
         x-checker-data:
           type: anitya
           project-id: 50
@@ -120,9 +120,9 @@ modules:
       - '*.cmd'
     sources:
       - type: file
-        url: http://archive.apache.org/dist/maven/maven-3/3.9.8/binaries/apache-maven-3.9.8-bin.tar.gz
+        url: http://archive.apache.org/dist/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.tar.gz
         dest-filename: apache-maven-bin.tar.gz
-        sha512: 7d171def9b85846bf757a2cec94b7529371068a0670df14682447224e57983528e97a6d1b850327e4ca02b139abaab7fcb93c4315119e6f0ffb3f0cbc0d0b9a2
+        sha512: a555254d6b53d267965a3404ecb14e53c3827c09c3b94b5678835887ab404556bfaf78dcfe03ba76fa2508649dca8531c74bca4d5846513522404d48e8c4ac8b
         x-checker-data:
           type: anitya
           project-id: 1894
@@ -141,9 +141,9 @@ modules:
       - '*.bat'
     sources:
       - type: file
-        url: https://services.gradle.org/distributions/gradle-8.9-bin.zip
+        url: https://services.gradle.org/distributions/gradle-8.10.2-bin.zip
         dest-filename: gradle-bin.zip
-        sha256: d725d707bfabd4dfdc958c624003b3c80accc03f7037b5122c4b1d0ef15cecab
+        sha256: 31c55713e40233a8303827ceb42ca48a47267a0ad4bab9177123121e71524c26
         x-checker-data:
           type: json
           url: https://services.gradle.org/versions/current
