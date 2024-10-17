@@ -26,12 +26,26 @@ modules:
         url: https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.8.1+1/OpenJDK17U-jdk_x64_linux_hotspot_17.0.8.1_1.tar.gz
         dest-filename: java-openjdk.tar.gz
         sha256: c25dfbc334068a48c19c44ce39ad4b8427e309ae1cfa83f23c102e78b8a6dcc0
+        x-checker-data:
+          type: json
+          url: https://api.adoptium.net/v3/assets/latest/17/hotspot?os=linux&architecture=x64&image_type=jdk
+          version-query: .[0].version.semver
+          url-query: .[0].binary.package.link
+          versions:
+            - ==: 17
       - type: file
         only-arches:
           - aarch64
         url: https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.8.1+1/OpenJDK17U-jdk_aarch64_linux_hotspot_17.0.8.1_1.tar.gz
         dest-filename: java-openjdk.tar.gz
         sha256: eefd3cf3b3dd47ff269fa5b5c10b5e096b163f4e9c1810023abdbc00dc6cc304
+        x-checker-data:
+          type: json
+          url: https://api.adoptium.net/v3/assets/latest/17/hotspot?os=linux&architecture=aarch64&image_type=jdk
+          version-query: .[0].version.semver
+          url-query: .[0].binary.package.link
+          versions:
+            - ==: 17
     build-commands:
       - mkdir -p $FLATPAK_DEST/bootstrap-java
       - tar xf java-openjdk.tar.gz --strip-components=1 --directory=$FLATPAK_DEST/bootstrap-java
