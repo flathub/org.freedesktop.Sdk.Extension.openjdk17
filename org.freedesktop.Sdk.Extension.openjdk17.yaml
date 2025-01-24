@@ -23,9 +23,9 @@ modules:
       - type: file
         only-arches:
           - x86_64
-        url: https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.13%2B11/OpenJDK17U-jdk_x64_linux_hotspot_17.0.13_11.tar.gz
+        url: https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.14%2B7/OpenJDK17U-jdk_x64_linux_hotspot_17.0.14_7.tar.gz
         dest-filename: java-openjdk.tar.gz
-        sha256: 8682892fc02965930b9022c066fa164dd6f458ef4a5dc262016aa28333b30f49
+        sha256: a3af83983fb94dd7d11b13ba2dba0fb6819dc2caaf87e6937afd22ad4680ae9a
         x-checker-data:
           type: json
           url: https://api.adoptium.net/v3/assets/latest/17/hotspot?os=linux&architecture=x64&image_type=jdk
@@ -36,9 +36,9 @@ modules:
       - type: file
         only-arches:
           - aarch64
-        url: https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.13%2B11/OpenJDK17U-jdk_aarch64_linux_hotspot_17.0.13_11.tar.gz
+        url: https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.14%2B7/OpenJDK17U-jdk_aarch64_linux_hotspot_17.0.14_7.tar.gz
         dest-filename: java-openjdk.tar.gz
-        sha256: 0c17fa4f14c0d2cc9e9334f996fccdddc5da4459d768f3105c7ff0283c47bf62
+        sha256: 62efc3e83fc9bcd08db7c4f02977328cb3559a54519078d8337314cf025d19b7
         x-checker-data:
           type: json
           url: https://api.adoptium.net/v3/assets/latest/17/hotspot?os=linux&architecture=aarch64&image_type=jdk
@@ -84,8 +84,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/adoptium/jdk17u.git
-        tag: jdk-17.0.13+11
-        commit: eed263c8077e066a32d746fd188f2dee8c47b9ab
+        tag: jdk-17.0.14+7
+        commit: c5c90ffa45d0c14bcb013164f0992938eb4740ab
         x-checker-data:
           type: json
           url: https://api.github.com/repos/adoptium/temurin17-binaries/releases/latest
@@ -155,9 +155,9 @@ modules:
       - '*.bat'
     sources:
       - type: file
-        url: https://services.gradle.org/distributions/gradle-8.10.2-bin.zip
+        url: https://services.gradle.org/distributions/gradle-8.12.1-bin.zip
         dest-filename: gradle-bin.zip
-        sha256: 31c55713e40233a8303827ceb42ca48a47267a0ad4bab9177123121e71524c26
+        sha256: 8d97a97984f6cbd2b85fe4c60a743440a347544bf18818048e611f5288d46c94
         x-checker-data:
           type: json
           url: https://services.gradle.org/versions/current
