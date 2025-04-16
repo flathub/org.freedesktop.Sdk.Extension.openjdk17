@@ -36,9 +36,9 @@ modules:
       - type: file
         only-arches:
           - aarch64
-        url: https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.14%2B7/OpenJDK17U-jdk_aarch64_linux_hotspot_17.0.14_7.tar.gz
+        url: https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.15%2B6/OpenJDK17U-jdk_aarch64_linux_hotspot_17.0.15_6.tar.gz
         dest-filename: java-openjdk.tar.gz
-        sha256: 62efc3e83fc9bcd08db7c4f02977328cb3559a54519078d8337314cf025d19b7
+        sha256: 0db0d6cbe33238f33aa52837b1dc8fc6067b34d206b3e0f9243c7f8c9b9539a5
         x-checker-data:
           type: json
           url: https://api.adoptium.net/v3/assets/latest/17/hotspot?os=linux&architecture=aarch64&image_type=jdk
@@ -84,8 +84,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/adoptium/jdk17u.git
-        tag: jdk-17.0.14+7
-        commit: c5c90ffa45d0c14bcb013164f0992938eb4740ab
+        tag: jdk-17.0.15+6
+        commit: 0b592b7f04aae6cec666345be37c1456845e6e0d
         x-checker-data:
           type: json
           url: https://api.github.com/repos/adoptium/temurin17-binaries/releases/latest
@@ -155,9 +155,9 @@ modules:
       - '*.bat'
     sources:
       - type: file
-        url: https://services.gradle.org/distributions/gradle-8.12.1-bin.zip
+        url: https://services.gradle.org/distributions/gradle-8.13-bin.zip
         dest-filename: gradle-bin.zip
-        sha256: 8d97a97984f6cbd2b85fe4c60a743440a347544bf18818048e611f5288d46c94
+        sha256: 20f1b1176237254a6fc204d8434196fa11a4cfb387567519c61556e8710aed78
         x-checker-data:
           type: json
           url: https://services.gradle.org/versions/current
