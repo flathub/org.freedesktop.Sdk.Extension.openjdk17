@@ -95,6 +95,7 @@ modules:
         paths:
           - patches/0001-Avoid-requiring-pcsc-development-files-at-runtime.patch
           - patches/0002-java-remove-version-build.patch
+          - patches/0003-Allow-ccache-to-be-handled-by-GCC-wrappers.patch
       - type: shell
         commands:
           - chmod a+x configure
