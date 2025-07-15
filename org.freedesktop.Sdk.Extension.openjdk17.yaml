@@ -92,9 +92,9 @@ modules:
           is-main-source: true
           tag-query: .tag_name
       - type: patch
-        path: 0001-Avoid-requiring-pcsc-development-files-at-runtime.patch
-      - type: patch
-        path: 0002-java-remove-version-build.patch
+        paths:
+          - patches/0001-Avoid-requiring-pcsc-development-files-at-runtime.patch
+          - patches/0002-java-remove-version-build.patch
       - type: shell
         commands:
           - chmod a+x configure
