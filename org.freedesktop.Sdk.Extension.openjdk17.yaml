@@ -1,7 +1,7 @@
 id: org.freedesktop.Sdk.Extension.openjdk17
-branch: '24.08'
+branch: '25.08'
 runtime: org.freedesktop.Sdk
-runtime-version: '24.08'
+runtime-version: '25.08'
 build-extension: true
 sdk: org.freedesktop.Sdk
 separate-locales: false
@@ -96,6 +96,7 @@ modules:
           - patches/0001-Avoid-requiring-pcsc-development-files-at-runtime.patch
           - patches/0002-java-remove-version-build.patch
           - patches/0003-Allow-ccache-to-be-handled-by-GCC-wrappers.patch
+          - patches/0004-Build-failure-with-glibc-2.42-due-to-uabs-name.patch
       - type: shell
         commands:
           - chmod a+x configure
