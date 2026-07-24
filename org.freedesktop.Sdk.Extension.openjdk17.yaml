@@ -70,7 +70,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/adoptium/jdk17u.git
-        tag: jdk-17.0.20-ga
+        tag: jdk-17.0.20+8
         commit: 8cbbca61432426a3441aa08838d930ef954ea1ba
         x-checker-data:
           type: json
