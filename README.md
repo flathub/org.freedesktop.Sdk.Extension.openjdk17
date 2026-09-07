@@ -15,7 +15,7 @@ You can bundle the JRE with your Flatpak application by adding this SDK extensio
 ```yaml
 app-id: com.example.myapp
 runtime: org.freedesktop.Platform
-runtime-version: '25.08'
+runtime-version: '26.08'
 sdk: org.freedesktop.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.openjdk17
