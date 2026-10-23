@@ -70,8 +70,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/adoptium/jdk17u.git
-        tag: jdk-17.0.20.1+1
-        commit: c35a8d5a87559ad2734f1023bb321176c13c7ba0
+        tag: jdk-17.0.21+9
+        commit: e8adc958475b92b9f251145c6ce20532be16d806
         x-checker-data:
           type: json
           url: https://api.github.com/repos/adoptium/temurin17-binaries/releases/latest
@@ -101,9 +101,9 @@ modules:
       - '*.cmd'
     sources:
       - type: file
-        url: http://archive.apache.org/dist/ant/binaries/apache-ant-1.10.17-bin.tar.gz
+        url: http://archive.apache.org/dist/ant/binaries/apache-ant-1.10.18-bin.tar.gz
         dest-filename: apache-ant-bin.tar.gz
-        sha512: a96ca6455ec9af5e702df7d1ed5a2ec1cfb381eac3e9a767ecb6be1706e826941045e8fd7ca663ba101bc47bfa18351f540dd27e9e7af57908ac78e65268eee7
+        sha512: c510d744876d8da48dabc9495b023b6ec5284a0f18b40ee50d98ce099e791ca5c73e3cd4c80d3c90d3efc03f9620be43aad0a373ed47198284f7e3373e0db2c3
         x-checker-data:
           type: anitya
           project-id: 50
@@ -121,9 +121,9 @@ modules:
       - '*.cmd'
     sources:
       - type: file
-        url: http://archive.apache.org/dist/maven/maven-3/3.9.16/binaries/apache-maven-3.9.16-bin.tar.gz
+        url: http://archive.apache.org/dist/maven/maven-3/3.10.0/binaries/apache-maven-3.10.0-bin.tar.gz
         dest-filename: apache-maven-bin.tar.gz
-        sha512: 831a8591fe20c8243b1dbe7d71e3244f31d1665b0804b2e825e38cbbe5ce0cafb8338851f90780735568773e0a6cd07bbec107cda0b896b008b861075358b6f6
+        sha512: 908b1501bfb420bf7c8affb855534a9c407fd6099367bfb9f2f2dcb8e9799102bffb84518cde74c679bd76870247c6528683abdd620581bffa90f95d92d175aa
         x-checker-data:
           type: anitya
           project-id: 1894
@@ -134,7 +134,7 @@ modules:
             <: 4.0.0
     build-commands:
       - mkdir -p $FLATPAK_DEST/maven
-      - tar xf apache-maven-bin.tar.gz --strip-components=1 --exclude=jansi-native --directory=$FLATPAK_DEST/maven
+      - tar xf apache-maven-bin.tar.gz --strip-components=1 --exclude=jline-native --directory=$FLATPAK_DEST/maven
       - ln -s $FLATPAK_DEST/maven/bin/mvn $FLATPAK_DEST/maven/bin/mvnDebug $FLATPAK_DEST/bin
   - name: gradle
     buildsystem: simple
