@@ -43,7 +43,7 @@ modules:
       - --with-jvm-variants=server
       - --with-version-pre=
       - --with-version-opt=
-      - --with-vendor-version-string=21.9
+      - --with-vendor-version-string=25.08
       - --with-vendor-name=Flathub
       - --with-vendor-url=https://flathub.org
       - --with-vendor-bug-url=https://github.com/flathub/org.freedesktop.Sdk.Extension.openjdk17/issues
